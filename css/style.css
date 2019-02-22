@@ -1,3 +1,48 @@
-p {
-    color: darkslateblue;
+/* Canvas and pixels */
+
+.canvas {
+    background-color: gray;
+    border-radius: 20px;
+    border: 2px solid black;
 }
+
+.pixel {
+    display: inline-block;
+    background-color: darkgray;
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+}
+
+/* Palette and each color */
+
+.palette {
+    background-color: pink;
+    border-radius: 20px;
+    border: 2px solid black;
+    
+}
+
+.color {
+    display: inline-block;
+    background-color: lightgray;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+/* Skeleton */
+
+body {
+    margin: 0;
+}
+
+header,
+footer {
+    background-color: gray;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Media queries */
