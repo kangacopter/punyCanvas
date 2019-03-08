@@ -16,6 +16,18 @@
   margin: 2px;
 }
 
+/* Color variables */
+:root {
+  --red: #D62828;
+  --green: #9FD356;
+  --blue: #3C91E6;
+  --yellow: #FFCA3A;
+  --purple: #5B507A;
+  --orange: #F4681D;
+  --black: #FFFFFF;
+  --white: #000000;
+}
+
 /* Palette and each color */
 
 .palette {
@@ -31,6 +43,41 @@
   border: 2px solid black;
   width: 40px;
   height: 40px;
+}
+
+/* !! The ids here might be pointless, but I am leaving it 
+for potential user color palette changing !! */
+#color1, 
+.red {
+  background-color: var(--red);
+}
+#color2, 
+.green {
+  background-color: var(--green);
+}
+#color3, 
+.blue {
+  background-color: var(--blue);
+}
+#color4, 
+.yellow {
+  background-color: var(--yellow);
+}
+#color5, 
+.purple {
+  background-color: var(--purple);
+}
+#color6, 
+.orange {
+  background-color: var(--orange);
+}
+#color7, 
+.black {
+  background-color: var(--black);
+}
+#color8, 
+.white {
+  background-color: var(--white);
 }
 
 /* Skeleton */
@@ -55,8 +102,9 @@ footer {
 }
 
 /* header menu */
-.menuButton {
+/* .menuButton {
   float: right;
-}
+} */
+
 
 /* Media queries */
