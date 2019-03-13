@@ -17,94 +17,52 @@ $(document).ready(function() {
   // Click on each pixel to change color
   $(".pixel").click(function() {
     $(this).removeClass("red green blue yellow purple orange black white");
+    // Check this out ^^ must only remove the color but not the actual color name class.
     $(this).addClass(currentColor);
   });
 });
 
-// Set currentColor, which is a CLASS NAME to apply to the pixel
+// Function to get color from each palette
+$.fn.getColor = function() {
+  console.log($(this), "INSIDE GETCOLOR");
+
+  let color = $(this)
+    .attr("class")
+    .split(" ")
+    .filter(function(x) {
+      return !x.match("color");
+    });
+  return color;
+};
+
+// Set currentColor of palette clicked, which is a CLASS NAME to apply to the pixel
 // Listen for click on each color, set current color variable to that color
 $(".color").click(function() {
   console.log(this);
   switch ($(this).attr("id")) {
     case "color1":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return !x.match("color");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color2":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("green");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color3":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("blue");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color4":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("yellow");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color5":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("purple");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color6":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("orange");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color7":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("black"); // BUT!! you want it to be NOT that color(???)
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
     case "color8":
-      currentColor = $(this)
-        .attr("class")
-        .split(" ")
-        .filter(function(x) {
-          return x.match("white");
-        });
-      console.log(currentColor + " CURRENT COLOR");
-
+      currentColor = $(this).getColor();
       break;
   }
 });
@@ -112,5 +70,3 @@ $(".color").click(function() {
 //  Will need to figure this out so a set number of pixels w*h
 // Every image will be the same size
 // Will need an array to store all of the pixels!!!
-
-// Maybe don't use .css and set this with classes
