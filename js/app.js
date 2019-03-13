@@ -1,67 +1,110 @@
-var canvas = [];
+let canvas = [];
 // Use an array to store the pixels so they can be output
-var currentColor = "";
+let currentColor = "";
+
+// Maybe do something with clicking + drag (so you don't have to click each square)
+// Clear pixel option (maybe eraser in palette)
+// Clear canvas
 
 $(document).ready(function() {
   for (var x = 0; x < 16; x++) {
     for (var y = 0; y < 16; y++) {
-      var $pixel = $("<div class='pixel'></div>");
+      let $pixel = $("<div class='pixel'></div>");
       $("#pixelCanvas").append($pixel);
     }
   }
 
   // Click on each pixel to change color
   $(".pixel").click(function() {
-    // console.log($(this).css("background-color"))
-
-    $(this).css("background-color", "red");
+    $(this).removeClass("red green blue yellow purple orange black white");
+    $(this).addClass(currentColor);
   });
 });
 
 // Set currentColor, which is a CLASS NAME to apply to the pixel
 // Listen for click on each color, set current color variable to that color
 $(".color").click(function() {
-  console.log(".color clicked");
   console.log(this);
   switch ($(this).attr("id")) {
     case "color1":
-      console.log("color1 clicked");
       currentColor = $(this)
         .attr("class")
         .split(" ")
         .filter(function(x) {
-          console.log(x + "EX");
-          return x.match("red"); // BUT!! you want it to be NOT that color
+          return !x.match("color");
         });
+      console.log(currentColor + " CURRENT COLOR");
 
-      // $(this).attr("class").split(' ').each(
-      //   function() {
-      //     console.log(this + "ldkafjds")
-      //   })
-      // May have to use a regex to kill the "color" class and isolate
-      // Or maybe an array and pop color out??
-      console.log(currentColor);
       break;
     case "color2":
-      console.log("color2 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("green");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color3":
-      console.log("color3 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("blue");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color4":
-      console.log("color4 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("yellow");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color5":
-      console.log("color5 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("purple");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color6":
-      console.log("color6 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("orange");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color7":
-      console.log("color7 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("black"); // BUT!! you want it to be NOT that color(???)
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
     case "color8":
-      console.log("color8 clicked");
+      currentColor = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return x.match("white");
+        });
+      console.log(currentColor + " CURRENT COLOR");
+
       break;
   }
 });

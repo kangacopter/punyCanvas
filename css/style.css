@@ -18,14 +18,14 @@
 
 /* Color variables */
 :root {
-  --red: #D62828;
-  --green: #9FD356;
-  --blue: #3C91E6;
-  --yellow: #FFCA3A;
-  --purple: #5B507A;
-  --orange: #F4681D;
-  --black: #FFFFFF;
-  --white: #000000;
+  --red: #d62828;
+  --green: #9fd356;
+  --blue: #3c91e6;
+  --yellow: #ffca3a;
+  --purple: #5b507a;
+  --orange: #f4681d;
+  --white: #ffffff;
+  --black: #000000;
 }
 
 /* Palette and each color */
@@ -47,35 +47,35 @@
 
 /* !! The ids here might be pointless, but I am leaving it 
 for potential user color palette changing !! */
-#color1, 
+#color1,
 .red {
   background-color: var(--red);
 }
-#color2, 
+#color2,
 .green {
   background-color: var(--green);
 }
-#color3, 
+#color3,
 .blue {
   background-color: var(--blue);
 }
-#color4, 
+#color4,
 .yellow {
   background-color: var(--yellow);
 }
-#color5, 
+#color5,
 .purple {
   background-color: var(--purple);
 }
-#color6, 
+#color6,
 .orange {
   background-color: var(--orange);
 }
-#color7, 
+#color7,
 .black {
   background-color: var(--black);
 }
-#color8, 
+#color8,
 .white {
   background-color: var(--white);
 }
@@ -105,6 +105,5 @@ footer {
 /* .menuButton {
   float: right;
 } */
-
 
 /* Media queries */
