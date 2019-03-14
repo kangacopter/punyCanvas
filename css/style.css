@@ -82,7 +82,8 @@ for potential user color palette changing !! */
 }
 
 /* Eraser */
-.eraser {
+#eraser,
+.none {
  background-color: none;
 }
 
