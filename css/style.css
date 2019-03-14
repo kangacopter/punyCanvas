@@ -34,11 +34,12 @@
   background-color: pink;
   border-radius: 20px;
   border: 2px solid black;
+  padding: 10px;
+  width: 50%;
 }
 
 .color {
   display: inline-block;
-  background-color: lightgray;
   border-radius: 50%;
   border: 2px solid black;
   width: 40px;
@@ -80,6 +81,20 @@ for potential user color palette changing !! */
   background-color: var(--white);
 }
 
+/* Eraser */
+.eraser {
+ background-color: none;
+}
+
+.line {
+  width: 41px;
+  height: 15px;
+  border-bottom: 3px solid var(--red);
+  transform: rotate(-45deg);
+  position: relative;
+  top: 6px;
+  right: 6px;
+}
 /* Skeleton */
 
 body {
