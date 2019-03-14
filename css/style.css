@@ -16,7 +16,7 @@
   margin: 2px;
 }
 
-/* Color variables */
+/* Reusable CSS color variables */
 :root {
   --red: #d62828;
   --green: #9fd356;
@@ -29,7 +29,6 @@
 }
 
 /* Palette and each color */
-
 .palette {
   background-color: pink;
   border-radius: 20px;
@@ -46,8 +45,6 @@
   height: 40px;
 }
 
-/* !! The ids here might be pointless, but I am leaving it 
-for potential user color palette changing !! */
 #color1,
 .red {
   background-color: var(--red);
@@ -96,6 +93,7 @@ for potential user color palette changing !! */
   top: 6px;
   right: 6px;
 }
+
 /* Skeleton */
 
 body {

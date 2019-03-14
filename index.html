@@ -9,9 +9,14 @@
     <header>
       <h1>puny canvas</h1>
     </header>
+
+    <!-- Need container to place these on each side inline-block -->
+    <!-- Right side: -->
     <div class="canvas">
       <div id="pixelCanvas"></div>
     </div>
+
+    <!-- Left side: -->
     <div class="palette">
       <div class="color red" id="color1"></div>
       <div class="color green" id="color2"></div>
@@ -23,6 +28,8 @@
       <div class="color white" id="color8"></div>
       <div class="color none" id="eraser"><div class="line"></div></div>
     </div>
+    <!-- End responsive container -->
+
     <footer>footer text</footer>
   </body>
   <script
@@ -37,12 +44,13 @@
   TODO:
   
   -- Need buttons to clear the canvas
-    -- Can they clear a pixel?
-  -- Maybe a current color palette display
+    -- Is palette going to become a full toolbox:
+      -- Colors, current color, eraser, clear canvas, output
+      -- Can they name this? Probably should let them name this... maybe output a title on the image.
   -- Maybe an error message when there is no color
   -- Make layout look good
   -- Section for output
-  -- Maybe a hover cursor
+  -- Maybe a hover cursor that is a paintbrush?
   -- Menu that will probably just open modals for information:
     -- Gallery (just do fake images here)
     -- About (about me, about project, show process?)

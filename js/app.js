@@ -24,10 +24,10 @@ $(document).ready(function() {
   });
 
   // Determines if the mouse is clicked for dragging
-  $(".canvas").mousedown(function() {
+  $(document).mousedown(function() {
     dragging = true;
   });
-  $(".canvas").mouseup(function() {
+  $(document).mouseup(function() {
     dragging = false;
   });
 
@@ -35,7 +35,6 @@ $(document).ready(function() {
   $(".pixel").mouseover(function() {
     if (dragging) {
       $(this).removeClass("red green blue yellow purple orange black white");
-
       $(this).addClass(currentColor);
     }
   });
@@ -43,8 +42,6 @@ $(document).ready(function() {
 
 // Function to get color from each palette
 $.fn.getColor = function() {
-  console.log($(this), "INSIDE GETCOLOR");
-
   let color = $(this)
     .attr("class")
     .split(" ")
@@ -88,8 +85,6 @@ $(".color").click(function() {
       break;
   }
 });
-
-// Eraser function
 
 //  Will need to figure this out so a set number of pixels w*h
 // Every image will be the same size
