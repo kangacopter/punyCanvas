@@ -15,6 +15,7 @@ $(document).ready(function() {
     }
   }
 
+
   // Click on each pixel to change color. Set dragging function so user can
   // hold the mouse down and drag over elements to change them.
   $(".pixel").click(function() {
@@ -30,6 +31,16 @@ $(document).ready(function() {
   $(document).mouseup(function() {
     dragging = false;
   });
+
+  // ATTEMPT TO FIX DRAGGING PROBLEM BUT IT IS FLAWED
+    $(document).on("dragend", function() {
+      dragging = false;
+    });
+    $(document).on("dragstart", function() {
+      dragging = false;
+    });
+
+    // TEST THIS SOME MORE
 
   // Hovering over pixels to paint if mouse is clicked
   $(".pixel").mouseover(function() {
