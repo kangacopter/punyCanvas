@@ -1,19 +1,25 @@
 /* Canvas and pixels */
 
 .canvas {
-  background-color: gray;
-  border-radius: 20px;
+  background-color: #757575;
+  /* border-radius: 20px; */
   border: 2px solid black;
   width: 384px;
   padding: 20px;
+  margin: 10 auto;
 }
 
 .pixel {
   display: inline-block;
-  background-color: darkgray;
+  background-color: #f9fffb;
+  box-shadow: 1px 1px 0.5px #000;
   width: 20px;
   height: 20px;
   margin: 2px;
+}
+
+.canvas-menu {
+  border: 2px solid #000;
 }
 
 /* Reusable CSS color variables */
@@ -29,12 +35,27 @@
 }
 
 /* Palette and each color */
+
+.palette-wrap {
+  border: 1px solid red;
+}
+
+.palette-header {
+  border: 2px solid black;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
 .palette {
   background-color: pink;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   border: 2px solid black;
   padding: 10px;
-  width: 50%;
+  /* width: 80%; */
+  margin: 0 auto;
+  position: relative;
+  top: -10px;
 }
 
 .color {
@@ -81,7 +102,7 @@
 /* Eraser */
 #eraser,
 .none {
- background-color: none;
+  background-color: none;
 }
 
 .line {
@@ -94,6 +115,10 @@
   right: 6px;
 }
 
+/* #current-color {
+    
+} */
+
 /* Skeleton */
 
 body {
@@ -102,7 +127,7 @@ body {
 
 header,
 footer {
-  background-color: gray;
+  background-color: #c1f7dc;
   width: 100%;
   padding: 0.2em;
 }
@@ -119,5 +144,11 @@ footer {
 /* .menuButton {
   float: right;
 } */
+
+/* Fonts */
+
+h1 {
+  color: #ff5e5b;
+}
 
 /* Media queries */
