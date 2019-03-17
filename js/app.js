@@ -89,10 +89,12 @@ $(".color").on("click", function() {
       $(this).getColor();
       break;
   }
-});
 
-// Clear the canvas
-$("#clearCanvas").on("click", function() {});
+  // Clear the canvas
+  $("#clearCanvas").on("click", function() {
+    $(".pixel").removeClass("red green blue yellow purple orange black white");
+  });
+});
 
 //  Will need to figure this out so a set number of pixels w*h
 // Every image will be the same size
