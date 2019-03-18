@@ -124,14 +124,16 @@
 /* UI */
 button {
   border: 1px solid #000;
-  font-size: 1em;
+  font-size: 1.3rem;
   border-radius: 10px;
+  font-family: "VT323", monospace;
 }
 
 /* Skeleton */
 
 body {
   margin: 0;
+  font-family: "Dosis", sans-serif;
 }
 
 .site {
@@ -155,6 +157,7 @@ footer {
 
 header {
   border-bottom: 2px solid #000;
+  text-align: center;
 }
 
 footer {
@@ -164,6 +167,11 @@ footer {
 }
 
 /* Fonts */
+
+h1,
+h2 {
+  font-family: "VT323", monospace;
+}
 
 h1 {
   color: #ff5e5b;
