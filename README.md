@@ -6,3 +6,7 @@ To create a web app that gives the user an enlarged grid to create their own pix
 * Color palette to choose colors to apply to each pixel
 * Button to generate an image from the canvas
 * How to section
+* A page for a future gallery
+
+## How to run
+* Open index.html file in browser
