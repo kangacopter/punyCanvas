@@ -1,43 +1,50 @@
 <html>
   <head>
-    <title>Puny Canvas</title>
+    <title>puny canvas</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
   <body>
-    <header>
-      <h1>puny canvas</h1>
-    </header>
+    <div class="site">
+      <header>
+        <h1>puny canvas</h1>
+      </header>
 
-    <!-- Need container to place these on each side inline-block -->
-    <!-- Right side: -->
-    <div class="canvas-wrap">
-      <div class="canvas">
-        <div id="pixelCanvas"></div>
-      </div>
-      <div class="canvas-menu"><button id="clearCanvas">clear</button></div>
-    </div>
+      <div class="container">
+        <!-- Need container to place these on each side inline-block -->
+        <!-- Right side: -->
+        <div class="canvas-wrap">
+          <div class="canvas">
+            <div id="pixelCanvas"></div>
+          </div>
+          <div class="canvas-menu">
+            <button id="clearCanvas">clear</button>
+            <button id="output">output</button>
+          </div>
+        </div>
 
-    <!-- Left side: -->
-    <div class="palette-wrap">
-      <div class="palette-header">
-        <h3>Palette</h3>
-        <div class="color" id="current-color"></div>
+        <!-- Left side: -->
+        <div class="palette-wrap">
+          <div class="palette-header">
+            <h3>Palette</h3>
+            <div class="color" id="current-color"></div>
+          </div>
+          <div class="palette">
+            <div class="color red" id="color1"></div>
+            <div class="color green" id="color2"></div>
+            <div class="color blue" id="color3"></div>
+            <div class="color yellow" id="color4"></div>
+            <div class="color purple" id="color5"></div>
+            <div class="color orange" id="color6"></div>
+            <div class="color black" id="color7"></div>
+            <div class="color white" id="color8"></div>
+            <div class="color none" id="eraser"><div class="line"></div></div>
+          </div>
+        </div>
       </div>
-      <div class="palette">
-        <div class="color red" id="color1"></div>
-        <div class="color green" id="color2"></div>
-        <div class="color blue" id="color3"></div>
-        <div class="color yellow" id="color4"></div>
-        <div class="color purple" id="color5"></div>
-        <div class="color orange" id="color6"></div>
-        <div class="color black" id="color7"></div>
-        <div class="color white" id="color8"></div>
-        <div class="color none" id="eraser"><div class="line"></div></div>
-      </div>
+      <!-- End responsive container -->
     </div>
-    <!-- End responsive container -->
 
     <footer>footer text</footer>
   </body>

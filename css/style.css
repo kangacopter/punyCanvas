@@ -41,6 +41,10 @@
 }
 
 .palette-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em 0 1em;
+  align-items: center;
   border: 2px solid black;
   background: #fff;
   position: relative;
@@ -48,14 +52,12 @@
 }
 
 .palette {
-  background-color: pink;
+  background-color: #cfcbca;
   /* border-radius: 20px; */
   border: 2px solid black;
   padding: 10px;
-  /* width: 80%; */
-  margin: 0 auto;
-  position: relative;
-  top: -10px;
+  /* position: relative;
+  top: -10px; */
 }
 
 .color {
@@ -125,25 +127,28 @@ body {
   margin: 0;
 }
 
+.site {
+  display: flex;
+  min-height: calc(100vh - 3em);
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  /* flex: 1; */
+}
+
 header,
 footer {
   background-color: #c1f7dc;
-  width: 100%;
-  padding: 0.2em;
-}
-
-header {
-  margin: 0 0 0.5em 0;
 }
 
 footer {
-  margin: 0 auto;
+  height: 3em;
 }
-
-/* header menu */
-/* .menuButton {
-  float: right;
-} */
 
 /* Fonts */
 
