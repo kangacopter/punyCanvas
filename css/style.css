@@ -24,6 +24,9 @@
 
 .canvas-menu {
   border: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
 }
 
 /* Reusable CSS color variables */
@@ -40,11 +43,12 @@
 
 /* Palette and each color */
 
-.palette-wrap {
-  padding: 1em;
+.box-wrap {
+  margin: 1em;
+  box-shadow: 4px 4px 0.1px #000;
 }
 
-.palette-header {
+.box-header {
   display: flex;
   justify-content: space-between;
   padding: 0 1em 0 1em;
@@ -58,13 +62,8 @@
 .palette {
   background-color: #cfcbca;
   border: 2px solid black;
+  border-top: none;
   padding: 1em;
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: auto; */
   display: grid;
   grid-template-columns: auto auto auto;
   justify-items: center;
@@ -139,6 +138,41 @@
   right: 6px;
 }
 
+/* Output */
+.output {
+  background-color: #cfcbca;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  border: 2px solid #000;
+  border-top: none;
+}
+
+.output-container {
+  background-color: red;
+  height: 16px;
+  width: 16px;
+  box-shadow: 1px 1px 0.5px #000;
+}
+
+/* .right-col {
+
+} */
+/* May need this for media query */
+
+.fa-save {
+  font-size: 25px;
+  background-color: #f9fffb;
+  padding: 6px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.fa-save:hover {
+  background-color: #cfcbca;
+}
+
 /* UI */
 button {
   border: 1px solid #000;
@@ -164,12 +198,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 header,
 footer {
-  background-color: #c1f7dc;
+  background-color: #cfcbca;
 }
 
 header {
@@ -191,7 +225,8 @@ h2 {
 }
 
 h1 {
-  color: #ff5e5b;
+  color: #000;
+  font-size: 3rem;
 }
 
 /* Media queries */
