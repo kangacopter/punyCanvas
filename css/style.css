@@ -41,7 +41,7 @@
 /* Palette and each color */
 
 .palette-wrap {
-  border: 1px solid red;
+  padding: 1em;
 }
 
 .palette-header {
@@ -57,19 +57,37 @@
 
 .palette {
   background-color: #cfcbca;
-  /* border-radius: 20px; */
   border: 2px solid black;
-  padding: 10px;
-  /* position: relative;
-  top: -10px; */
+  padding: 1em;
+  /* display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: auto; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-items: center;
+}
+
+#current-color {
+  height: 30px;
+  width: 30px;
+}
+
+#current-color .line {
+  top: 1px;
+  right: 5px;
+  width: 31px;
+  display: none;
 }
 
 .color {
-  display: inline-block;
   border-radius: 50%;
   border: 2px solid black;
   width: 40px;
   height: 40px;
+  margin: 0.3em;
 }
 
 #color1,
@@ -144,10 +162,9 @@ body {
 
 .container {
   display: flex;
-  align-items: stretch;
-  justify-content: space-around;
   flex-wrap: wrap;
-  /* flex: 1; */
+  justify-content: center;
+  align-items: center;
 }
 
 header,
@@ -178,3 +195,4 @@ h1 {
 }
 
 /* Media queries */
+/* Make a media query to make the palette bigger for mobile? */

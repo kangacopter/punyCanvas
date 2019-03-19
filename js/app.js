@@ -51,9 +51,13 @@ $.fn.getColor = function() {
   currentColor = color;
   // Set the current color indicator
   $("#current-color").removeClass(
-    "red green blue yellow purple orange black white"
+    "red green blue yellow purple orange black white none"
   );
   $("#current-color").addClass(currentColor);
+  if (color !== "none") {
+    $("#current-color-line").css({ display: "none" });
+  } else {
+  }
 };
 
 // Set currentColor of palette clicked, which is a CLASS NAME to apply to the pixel
@@ -87,12 +91,15 @@ $(".color").on("click", function() {
       break;
     case "eraser":
       $(this).getColor();
+      $("#current-color-line").css({ display: "block" });
       break;
   }
 
   // Clear the canvas
   $("#clearCanvas").on("click", function() {
-    $(".pixel").removeClass("red green blue yellow purple orange black white");
+    $(".pixel").removeClass(
+      "red green blue yellow purple orange black white none"
+    );
   });
 });
 
