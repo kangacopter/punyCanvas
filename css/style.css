@@ -6,20 +6,24 @@
 
 .canvas {
   background-color: #757575;
-  /* border-radius: 20px; */
   border: 2px solid black;
-  width: 384px;
   padding: 20px;
-  /* margin: 10 auto; */
+  position: relative;
 }
 
 .pixel {
-  display: inline-block;
   background-color: #f9fffb;
   box-shadow: 1px 1px 0.5px #000;
-  width: 20px;
-  height: 20px;
+  width: 1.5vw;
+  height: 1.5vw;
   margin: 2px;
+}
+
+.pixelRow {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .canvas-menu {
@@ -156,11 +160,6 @@
   box-shadow: 1px 1px 0.5px #000;
 }
 
-/* .right-col {
-
-} */
-/* May need this for media query */
-
 .fa-save {
   font-size: 25px;
   background-color: #f9fffb;
@@ -169,13 +168,15 @@
   border: 2px solid #000;
 }
 
-.fa-save:hover {
+.fa-save:hover,
+button:hover {
   background-color: #cfcbca;
 }
 
 /* UI */
 button {
   border: 1px solid #000;
+  background-color: #fff;
   font-size: 1.3rem;
   border-radius: 10px;
   font-family: "VT323", monospace;
@@ -230,4 +231,54 @@ h1 {
 }
 
 /* Media queries */
-/* Make a media query to make the palette bigger for mobile? */
+
+@media (max-width: 768px) {
+  .right-col {
+    width: 100%;
+  }
+
+  .pixel {
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+
+  .palette {
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto auto auto;
+  }
+
+  .box-wrap {
+    width: 100%;
+    margin: 1em 0;
+    box-shadow: none;
+  }
+
+  .canvas {
+    border: none;
+  }
+
+  .box-header,
+  .palette,
+  .output,
+  .canvas-menu {
+    border-right: none;
+    border-left: none;
+  }
+
+  footer {
+    height: 4em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  .pixel {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+}
+
+@media (max-width: 320px) {
+  /* .canvas {
+    padding: 0;
+  } */
+}
