@@ -3,32 +3,30 @@ let canvas = [];
 let currentColor = "";
 let dragging = false;
 
-// Maybe do something with clicking + drag (so you don't have to click each square)
-// Clear pixel option (maybe eraser in palette)
-// Clear canvas
-
+// Initialize the canvas of pixels
 $(document).ready(function() {
   for (var x = 0; x < 16; x++) {
+    let row = '<div class="pixelRow">';
     for (var y = 0; y < 16; y++) {
-      let $pixel = $("<div class='pixel'></div>");
-      $("#pixelCanvas").append($pixel);
+      row += "<div class='pixel'></div>";
     }
+    row += "</div>";
+    $("#pixelCanvas").append(row);
   }
 
 
   // Click on each pixel to change color. Set dragging function so user can
   // hold the mouse down and drag over elements to change them.
-  $(".pixel").click(function() {
+  $(".pixel").on("click", function() {
     $(this).removeClass("red green blue yellow purple orange black white");
-    // Check this out ^^ must only remove the color but not the actual color name class.
     $(this).addClass(currentColor);
   });
 
   // Determines if the mouse is clicked for dragging
-  $(document).mousedown(function() {
+  $(document).on("mousedown", function() {
     dragging = true;
   });
-  $(document).mouseup(function() {
+  $(document).on("mouseup", function() {
     dragging = false;
   });
 
@@ -43,7 +41,7 @@ $(document).ready(function() {
     // TEST THIS SOME MORE
 
   // Hovering over pixels to paint if mouse is clicked
-  $(".pixel").mouseover(function() {
+  $(".pixel").on("mouseover", function() {
     if (dragging) {
       $(this).removeClass("red green blue yellow purple orange black white");
       $(this).addClass(currentColor);
@@ -59,44 +57,57 @@ $.fn.getColor = function() {
     .filter(function(x) {
       return !x.match("color");
     });
-  return color;
+  currentColor = color;
+  // Set the current color indicator
+  $("#current-color").removeClass(
+    "red green blue yellow purple orange black white none"
+  );
+  $("#current-color").addClass(currentColor);
+  if (color !== "none") {
+    $("#current-color-line").css({ display: "none" });
+  } else {
+  }
 };
 
 // Set currentColor of palette clicked, which is a CLASS NAME to apply to the pixel
 // Listen for click on each color, set current color variable to that color
-$(".color").click(function() {
+$(".color").on("click", function() {
   console.log(this);
   switch ($(this).attr("id")) {
     case "color1":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color2":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color3":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color4":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color5":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color6":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color7":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "color8":
-      currentColor = $(this).getColor();
+      $(this).getColor();
       break;
     case "eraser":
-      currentColor = $(this).getColor();
+      $(this).getColor();
+      $("#current-color-line").css({ display: "block" });
       break;
   }
-});
 
-//  Will need to figure this out so a set number of pixels w*h
-// Every image will be the same size
-// Will need an array to store all of the pixels!!!
+  // Clear the canvas
+  $("#clearCanvas").on("click", function() {
+    $(".pixel").removeClass(
+      "red green blue yellow purple orange black white none"
+    );
+  });
+});
