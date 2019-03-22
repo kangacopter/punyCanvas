@@ -265,6 +265,14 @@ h1 {
     border-left: none;
   }
 
+  button {
+    font-size: 1.8em;
+  }
+
+  .fa-save {
+    font-size: 35px;
+  }
+
   footer {
     height: 4em;
   }
