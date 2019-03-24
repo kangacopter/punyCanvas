@@ -1,14 +1,23 @@
-let pixels = [];
-// Use an array to store the pixels so they can be output
+// Init main variables
 let currentColor = "";
 let dragging = false;
 
+// Set color arrays
+let blue = [60, 145, 230];
+let green = [159, 211, 86];
+let purple = [91, 80, 122];
+let orange = [244, 92, 9];
+let red = [214, 40, 40];
+let yellow = [91, 202, 58];
+let white = [255, 255, 255];
+let black = [255, 255, 255];
+
 // Initialize the canvas of pixels
 $(document).ready(function() {
-  for (var x = 0; x < 16; x++) {
+  for (let x = 0; x < 16; x++) {
     let row = '<div class="pixelRow">';
-    for (var y = 0; y < 16; y++) {
-      row += "<div class='pixel'></div>";
+    for (let y = 0; y < 16; y++) {
+      row += "<div class='pixel none'></div>";
     }
     row += "</div>";
     $("#pixelCanvas").append(row);
@@ -17,7 +26,7 @@ $(document).ready(function() {
   // Click on each pixel to change color. Set dragging function so user can
   // hold the mouse down and drag over elements to change them.
   $(".pixel").on("click", function() {
-    $(this).removeClass("red green blue yellow purple orange black white");
+    $(this).removeClass("red green blue yellow purple orange black white none");
     $(this).addClass(currentColor);
   });
 
@@ -29,7 +38,7 @@ $(document).ready(function() {
     dragging = false;
   });
 
-  // ATTEMPT TO FIX DRAGGING PROBLEM BUT IT IS FLAWED
+  // Flawed fix for dragging issue
   $(document).on("dragend", function() {
     dragging = false;
   });
@@ -40,10 +49,31 @@ $(document).ready(function() {
   // Hovering over pixels to paint if mouse is clicked
   $(".pixel").on("mouseover", function() {
     if (dragging) {
-      $(this).removeClass("red green blue yellow purple orange black white");
+      $(this).removeClass(
+        "red green blue yellow purple orange black white none"
+      );
       $(this).addClass(currentColor);
     }
   });
+
+  // Button for image output
+  $("#output").on("click", function() {
+    let pixels = [];
+    $(".pixel").each(function(i) {
+      let tmp = $(this)
+        .attr("class")
+        .split(" ")
+        .filter(function(x) {
+          return !x.match("pixel");
+        });
+      pixels.push(tmp);
+    });
+    console.log(pixels);
+  });
+
+  // Works, mostly. Now need to deal with adding the color arrays based on what color class is there
+
+  // Also the save button issue
 }); // End of document ready
 
 // Function to get color from each palette
@@ -62,7 +92,6 @@ $.fn.getColor = function() {
   $("#current-color").addClass(currentColor);
   if (color !== "none") {
     $("#current-color-line").css({ display: "none" });
-  } else {
   }
 };
 
@@ -72,26 +101,12 @@ $(".color").on("click", function() {
   console.log(this);
   switch ($(this).attr("id")) {
     case "color1":
-      $(this).getColor();
-      break;
     case "color2":
-      $(this).getColor();
-      break;
     case "color3":
-      $(this).getColor();
-      break;
     case "color4":
-      $(this).getColor();
-      break;
     case "color5":
-      $(this).getColor();
-      break;
     case "color6":
-      $(this).getColor();
-      break;
     case "color7":
-      $(this).getColor();
-      break;
     case "color8":
       $(this).getColor();
       break;
@@ -100,16 +115,12 @@ $(".color").on("click", function() {
       $("#current-color-line").css({ display: "block" });
       break;
   }
+});
 
-  // Clear the canvas
-  $("#clearCanvas").on("click", function() {
-    $(".pixel").removeClass(
-      "red green blue yellow purple orange black white none"
-    );
-  });
-
-  // Function for collecting each pixel color
-  // This should be called when the output button is hit
+// Clear the canvas
+$("#clearCanvas").on("click", function() {
+  $(".pixel").removeClass("red green blue yellow purple orange black white");
+  $(".pixel").addClass("none");
 });
 
 // Creates image output
@@ -125,32 +136,7 @@ $(".color").on("click", function() {
 
 // Go through each row, and based on the class, add the pixel's color class to the array in string form
 // Or maybe based on that class, ADD THE CORRECT RGB
-// So the array of numbers will be:
-// [
-//   [red, green, blue], // format
-//   [60, 145, 230], // blue
-//   [159, 211, 86], // green
-//   [91, 80, 122], // purple
-//   [244, 92, 9], // orange
-//   [214, 40, 40], // red
-//   [91, 202, 58], // yellow
-//   [255, 255, 255], // white
-//   [255, 255, 255], // black
-// ]
 // Maybe I can have set arrays for these values, then insert the arrays into the array
 // in order based on what the class color is... OHHHHH yes
 
-
-// Set color arrays
-let blue = [60, 145, 230];
-let green = [159, 211, 86];
-let purple = [91, 80, 122];
-let orange = [244, 92, 9];
-let red = [214, 40, 40];
-let yellow = [91, 202, 58];
-let white = [255, 255, 255];
-let black = [255, 255, 255];
-
-// Determine which class is equivalent to which array of the same name
-
-// Add that array to the pixel array
+// Get color, match to the array (switch), add that array to pixels array
