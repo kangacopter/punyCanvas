@@ -96,8 +96,38 @@ $(document).ready(function() {
           break;
       }
     });
-    console.log(pixels);
+    getImage(pixels);
   });
+
+  // Creates image output
+  // Thanks to this jsfiddle: http://jsfiddle.net/m1erickson/956kC/
+  // Check this out, also: https://www.w3schools.com/tags/canvas_imagedata_data.asp
+  function getImage(pixels) {
+    console.log(pixels);
+
+    let imgOutput = document.createElement("canvas");
+    let ctx = imgOutput.getContext("2d");
+
+    imgOutput.width = 16;
+    imgOutput.height = 16;
+
+    let imgData = ctx.createImageData(16, 16);
+    console.log(imgData);
+
+    for (let z = 0; z < imgData.data.length; z += 4) {
+      console.log(pixels[0][0], pixels[0][1], pixels[0][2]);
+      imgData.data[z + 0] = pixels[0][0];
+      imgData.data[z + 1] = pixels[0][1];
+      imgData.data[z + 2] = pixels[0][2];
+      imgData.data[z + 3] = 255; // This one is for opacity?
+    }
+
+    ctx.putImageData(imgData, 0, 0);
+
+    let outputImage = new Image();
+    outputImage.src = imgOutput.toDataURL();
+    $(".output-container").append(outputImage);
+  }
 }); // End of document ready
 
 // Function to get color from each palette
@@ -146,31 +176,6 @@ $("#clearCanvas").on("click", function() {
   $(".pixel").removeClass("red green blue yellow purple orange black white");
   $(".pixel").addClass("none");
 });
-
-// Creates image output
-// Thanks to this jsfiddle: http://jsfiddle.net/m1erickson/956kC/
-// Check this out, also: https://www.w3schools.com/tags/canvas_imagedata_data.asp
-
-let imgOutput = document.createElement("canvas");
-let ctx = imgOutput.getContext("2d");
-
-imgOutput.width = 16;
-imgOutput.height = 16;
-
-let imgData = ctx.createImageData(16, 16);
-
-for (let z = 0; z < imgData.data.length; z += 4) {
-  imgData.data[z + 0] = 10;
-  imgData.data[z + 1] = 200;
-  imgData.data[z + 2] = 43;
-  imgData.data[z + 3] = 255; // This one is for opacity?
-}
-
-ctx.putImageData(imgData, 0, 0);
-
-let outputImage = new Image();
-outputImage.src = imgOutput.toDataURL();
-$(".output-container").append(outputImage);
 
 // Go through each row, and based on the class, add the pixel's color class to the array in string form
 // Or maybe based on that class, ADD THE CORRECT RGB
