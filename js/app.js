@@ -10,7 +10,7 @@ let orange = [244, 92, 9];
 let red = [214, 40, 40];
 let yellow = [91, 202, 58];
 let white = [255, 255, 255];
-let black = [255, 255, 255];
+let black = [0, 0, 0];
 
 // Initialize the canvas of pixels
 $(document).ready(function() {
@@ -66,14 +66,38 @@ $(document).ready(function() {
         .filter(function(x) {
           return !x.match("pixel");
         });
-      pixels.push(tmp);
+      switch (tmp.toString()) {
+        case "red":
+          pixels.push(red);
+          break;
+        case "blue":
+          pixels.push(blue);
+          break;
+        case "green":
+          pixels.push(green);
+          break;
+        case "yellow":
+          pixels.push(yellow);
+          break;
+        case "orange":
+          pixels.push(orange);
+          break;
+        case "white" || "none":
+          pixels.push(white);
+          break;
+        case "black":
+          pixels.push(black);
+          break;
+        case "purple":
+          pixels.push(purple);
+          break;
+        default:
+          pixels.push(white);
+          break;
+      }
     });
     console.log(pixels);
   });
-
-  // Works, mostly. Now need to deal with adding the color arrays based on what color class is there
-
-  // Also the save button issue
 }); // End of document ready
 
 // Function to get color from each palette
@@ -124,15 +148,29 @@ $("#clearCanvas").on("click", function() {
 });
 
 // Creates image output
+// Thanks to this jsfiddle: http://jsfiddle.net/m1erickson/956kC/
+// Check this out, also: https://www.w3schools.com/tags/canvas_imagedata_data.asp
 
-// for (var x = 0; x < 16; x++) {
-//   let row = '<div class="pixelRow">';
-//   for (var y = 0; y < 16; y++) {
-//     row += "<div class='pixel'></div>";
-//   }
-//   row += "</div>";
-//   $("#pixelCanvas").append(row);
-// }
+let imgOutput = document.createElement("canvas");
+let ctx = imgOutput.getContext("2d");
+
+imgOutput.width = 16;
+imgOutput.height = 16;
+
+let imgData = ctx.createImageData(16, 16);
+
+for (let z = 0; z < imgData.data.length; z += 4) {
+  imgData.data[z + 0] = 10;
+  imgData.data[z + 1] = 200;
+  imgData.data[z + 2] = 43;
+  imgData.data[z + 3] = 255; // This one is for opacity?
+}
+
+ctx.putImageData(imgData, 0, 0);
+
+let outputImage = new Image();
+outputImage.src = imgOutput.toDataURL();
+$(".output-container").append(outputImage);
 
 // Go through each row, and based on the class, add the pixel's color class to the array in string form
 // Or maybe based on that class, ADD THE CORRECT RGB
@@ -140,3 +178,7 @@ $("#clearCanvas").on("click", function() {
 // in order based on what the class color is... OHHHHH yes
 
 // Get color, match to the array (switch), add that array to pixels array
+
+// Also the save button issue
+
+// Show hide output box
