@@ -8,7 +8,7 @@ let green = [159, 211, 86];
 let purple = [91, 80, 122];
 let orange = [244, 92, 9];
 let red = [214, 40, 40];
-let yellow = [91, 202, 58];
+let yellow = [255, 202, 58];
 let white = [255, 255, 255];
 let black = [0, 0, 0];
 
@@ -103,8 +103,7 @@ $(document).ready(function() {
   // Thanks to this jsfiddle: http://jsfiddle.net/m1erickson/956kC/
   // Check this out, also: https://www.w3schools.com/tags/canvas_imagedata_data.asp
   function getImage(pixels) {
-    console.log(pixels);
-
+    $(".output-container").empty();
     let imgOutput = document.createElement("canvas");
     let ctx = imgOutput.getContext("2d");
 
@@ -112,22 +111,32 @@ $(document).ready(function() {
     imgOutput.height = 16;
 
     let imgData = ctx.createImageData(16, 16);
-    console.log(imgData);
+    console.log(pixels, "PIXELS");
 
+    console.log(imgData, "IMG DATA");
+    let n = 0;
     for (let z = 0; z < imgData.data.length; z += 4) {
-      console.log(pixels[0][0], pixels[0][1], pixels[0][2]);
-      imgData.data[z + 0] = pixels[0][0];
-      imgData.data[z + 1] = pixels[0][1];
-      imgData.data[z + 2] = pixels[0][2];
+      console.log(pixels[n][0], pixels[n][1], pixels[n][2]);
+
+      imgData.data[z + 0] = pixels[n][0];
+      imgData.data[z + 1] = pixels[n][1];
+      imgData.data[z + 2] = pixels[n][2];
       imgData.data[z + 3] = 255; // This one is for opacity?
+      n++;
     }
 
     ctx.putImageData(imgData, 0, 0);
 
     let outputImage = new Image();
     outputImage.src = imgOutput.toDataURL();
+    imgDownload = imgOutput.toDataURL(); // This is setting the global variable for downloading
     $(".output-container").append(outputImage);
   }
+
+  $("#save-button").on("click", function() {
+    $(this).attr("href", imgDownload);
+    $(this).attr("download", "mypicture.png");
+  });
 }); // End of document ready
 
 // Function to get color from each palette

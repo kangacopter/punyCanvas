@@ -161,13 +161,17 @@
 
 .fa-save {
   font-size: 25px;
+}
+
+#save-button {
   background-color: #f9fffb;
   padding: 6px;
   border-radius: 50%;
   border: 2px solid #000;
+  color: #000;
 }
 
-.fa-save:hover,
+#save-button:hover,
 button:hover {
   background-color: #cfcbca;
 }
