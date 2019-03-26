@@ -1,9 +1,4 @@
 /* Canvas and pixels */
-
-.art-name {
-  border: 2px solid #000;
-}
-
 .canvas {
   background-color: #757575;
   border: 2px solid black;
@@ -31,6 +26,24 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
+}
+
+/* Canvas name editing */
+input {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 0.4em;
+  font-family: "VT323", monospace;
+  font-size: 1.2rem;
+  margin: 0.6em 0 0.6em 0;
+}
+
+.art-name-icon {
+  font-size: 1.2em;
+}
+
+#name-edit {
+  display: none;
 }
 
 /* Reusable CSS color variables */

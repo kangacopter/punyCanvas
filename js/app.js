@@ -133,10 +133,33 @@ $(document).ready(function() {
     $(".output-container").append(outputImage);
   }
 
+  // Save file - thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
     $(this).attr("href", imgDownload);
-    $(this).attr("download", "mypicture.png");
+    $(this).attr("download", "mypicture.png"); // pass the user's name to this
   });
+
+  // Click to change name of art
+  // $(".art-name").on("click", function() {
+  //   let name = $(".art-name-text").html();
+  //   $(".art-name-text").replaceWith(
+  //     "<input id='name-input' placeholder='" + name + "'></input>"
+  //   );
+
+  // $(".art-name-icon")
+  //   .removeClass("fa-edit")
+  //   .addClass("fa-check");
+
+  // $(".fa-check").on("click", function() {
+  //   let newName = $("#name-input").val();
+  //   $("#name-input").replaceWith(
+  //     '<h2 class="art-name art-name-text">' + newName + "</h2>"
+  //   );
+  //   $(".art-name-icon")
+  //     .removeClass("fa-check")
+  //     .addClass("fa-edit");
+  // });
+  // });
 }); // End of document ready
 
 // Function to get color from each palette

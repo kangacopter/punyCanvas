@@ -25,7 +25,17 @@
         <!-- Canvas section -->
         <div class="right-col">
           <div class="box-wrap">
-            <div class="box-header"><h2>art name</h2></div>
+            <!-- Try toggling this name-set with name-edit -->
+            <div class="box-header" id="name-set">
+              <h2 class="art-name art-name-text">art name</h2>
+              <i class="fas fa-edit art-name-icon"></i>
+            </div>
+
+            <div class="box-header" id="name-edit">
+              <input id="name-input" />
+              <i class="fas fa-check art-name-icon"></i>
+            </div>
+
             <div class="canvas">
               <div id="pixelCanvas"></div>
             </div>
@@ -85,23 +95,3 @@
   ></script>
   <script src="js/app.js"></script>
 </html>
-
-<!-- 
-  TODO:
-  
-  -- Need buttons to clear the canvas
-    -- Is palette going to become a full toolbox:
-      -- Colors, current color, eraser, clear canvas, output
-      -- Can they name this? Probably should let them name this... maybe output a title on the image.
-  -- Maybe an error message when there is no color
-  -- Make layout look good
-  -- Section for output
-  -- Maybe a hover cursor that is a paintbrush?
-  -- Menu that will probably just open modals for information:
-    -- Gallery (just do fake images here)
-    -- About (about me, about project, show process?)
-    -- Other cool things/links/etc
-  -- Get this footer stinky. Or sticky. Whatever. It stinks now. Less stinky, more sticky okstop
-  -- Maybe make the grid responsive, but I think it will have to stay fixed.
-
--->
