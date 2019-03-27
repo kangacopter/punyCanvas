@@ -1,6 +1,7 @@
 // Init main variables
 let currentColor = "";
 let dragging = false;
+let artName = "art name";
 
 // Set color arrays
 let blue = [60, 145, 230];
@@ -136,30 +137,39 @@ $(document).ready(function() {
   // Save file - thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
     $(this).attr("href", imgDownload);
-    $(this).attr("download", "mypicture.png"); // pass the user's name to this
+    $(this).attr("download", artName + ".png");
+    // This is based on the user's name input. In the future, it would be wise to ensure the user does not name
+    // the canvas with certain characters. For now, it appears that this is being done for me, to a degree.
   });
 
-  // Click to change name of art
-  // $(".art-name").on("click", function() {
-  //   let name = $(".art-name-text").html();
-  //   $(".art-name-text").replaceWith(
-  //     "<input id='name-input' placeholder='" + name + "'></input>"
-  //   );
+  // Name changing function
 
-  // $(".art-name-icon")
-  //   .removeClass("fa-edit")
-  //   .addClass("fa-check");
+  $.fn.setName = function() {
+    let name = $(".art-name-text").html();
+    $("#name-edit").css("display", "flex");
+    $("#name-set").css("display", "none");
+    // $("#name-input").attr("placeholder", name);
+    // Option to have the name as a placeholder.. this introduced a strange side effect though.
+  };
 
-  // $(".fa-check").on("click", function() {
-  //   let newName = $("#name-input").val();
-  //   $("#name-input").replaceWith(
-  //     '<h2 class="art-name art-name-text">' + newName + "</h2>"
-  //   );
-  //   $(".art-name-icon")
-  //     .removeClass("fa-check")
-  //     .addClass("fa-edit");
-  // });
-  // });
+  $(".art-name").on("click", function() {
+    $.fn.setName();
+  });
+
+  $(".fa-edit").on("click", function() {
+    $.fn.setName();
+  });
+
+  $(".fa-check").on("click", function() {
+    artName = $("#name-input").val();
+    if (!artName) {
+      artName = "art name";
+    }
+    $("#name-edit").css("display", "none");
+    $("#name-set").css("display", "flex");
+    $(".art-name-text").text(artName);
+    console.log(artName);
+  });
 }); // End of document ready
 
 // Function to get color from each palette
@@ -208,14 +218,3 @@ $("#clearCanvas").on("click", function() {
   $(".pixel").removeClass("red green blue yellow purple orange black white");
   $(".pixel").addClass("none");
 });
-
-// Go through each row, and based on the class, add the pixel's color class to the array in string form
-// Or maybe based on that class, ADD THE CORRECT RGB
-// Maybe I can have set arrays for these values, then insert the arrays into the array
-// in order based on what the class color is... OHHHHH yes
-
-// Get color, match to the array (switch), add that array to pixels array
-
-// Also the save button issue
-
-// Show hide output box

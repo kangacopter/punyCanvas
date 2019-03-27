@@ -46,6 +46,10 @@ input {
   display: none;
 }
 
+#name-set {
+  display: flex;
+}
+
 /* Reusable CSS color variables */
 :root {
   --red: #d62828;
