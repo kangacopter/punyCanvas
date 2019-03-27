@@ -112,13 +112,9 @@ $(document).ready(function() {
     imgOutput.height = 16;
 
     let imgData = ctx.createImageData(16, 16);
-    console.log(pixels, "PIXELS");
 
-    console.log(imgData, "IMG DATA");
     let n = 0;
     for (let z = 0; z < imgData.data.length; z += 4) {
-      console.log(pixels[n][0], pixels[n][1], pixels[n][2]);
-
       imgData.data[z + 0] = pixels[n][0];
       imgData.data[z + 1] = pixels[n][1];
       imgData.data[z + 2] = pixels[n][2];
@@ -136,15 +132,19 @@ $(document).ready(function() {
 
   // Save file - thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
-    $(this).attr("href", imgDownload);
-    $(this).attr("download", artName + ".png");
+    if (typeof imgDownload === "undefined") {
+      alert("Please doodle something and output before downloading!");
+    } else {
+      $(this).attr("href", imgDownload);
+      $(this).attr("download", artName + ".png");
+    }
     // This is based on the user's name input. In the future, it would be wise to ensure the user does not name
     // the canvas with certain characters. For now, it appears that this is being done for me, to a degree.
   });
 
   // Name changing function
 
-  $.fn.setName = function() {
+  $.fn.editName = function() {
     let name = $(".art-name-text").html();
     $("#name-edit").css("display", "flex");
     $("#name-set").css("display", "none");
@@ -152,15 +152,7 @@ $(document).ready(function() {
     // Option to have the name as a placeholder.. this introduced a strange side effect though.
   };
 
-  $(".art-name").on("click", function() {
-    $.fn.setName();
-  });
-
-  $(".fa-edit").on("click", function() {
-    $.fn.setName();
-  });
-
-  $(".fa-check").on("click", function() {
+  $.fn.setName = function() {
     artName = $("#name-input").val();
     if (!artName) {
       artName = "art name";
@@ -168,8 +160,32 @@ $(document).ready(function() {
     $("#name-edit").css("display", "none");
     $("#name-set").css("display", "flex");
     $(".art-name-text").text(artName);
-    console.log(artName);
+    return artName;
+  };
+
+  // Upon clicking the name or the edit icon, allow name editing
+  $(".art-name").on("click", function() {
+    $.fn.editName();
   });
+
+  $(".fa-edit").on("click", function() {
+    $.fn.editName();
+  });
+
+  // Upon clicking check button or hitting enter, submit the name
+  $(".fa-check").on("click", function() {
+    $.fn.setName();
+  });
+
+  $("#name-input").on("keypress", function(e) {
+    if (event.which == 13) {
+      e.preventDefault();
+      $.fn.setName();
+    }
+  });
+
+  // Top secret easter egg
+  console.log("i<3u, jquery. rip?");
 }); // End of document ready
 
 // Function to get color from each palette
@@ -194,7 +210,6 @@ $.fn.getColor = function() {
 // Set currentColor of palette clicked, which is a CLASS NAME to apply to the pixel
 // Listen for click on each color, set current color variable to that color
 $(".color").on("click", function() {
-  console.log(this);
   switch ($(this).attr("id")) {
     case "color1":
     case "color2":
