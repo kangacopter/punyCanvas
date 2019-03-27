@@ -50,6 +50,13 @@ input {
   display: flex;
 }
 
+.fa-edit,
+.fa-check {
+  border-radius: 50%;
+  border: 2px solid #000;
+  padding: 6px;
+}
+
 /* Reusable CSS color variables */
 :root {
   --red: #d62828;
@@ -189,13 +196,15 @@ input {
 }
 
 #save-button:hover,
-button:hover {
+button:hover,
+.fa-check:hover,
+.fa-edit:hover {
   background-color: #cfcbca;
 }
 
 /* UI */
 button {
-  border: 1px solid #000;
+  border: 2px solid #000;
   background-color: #fff;
   font-size: 1.3rem;
   border-radius: 10px;
@@ -235,7 +244,6 @@ header {
 footer {
   height: 3em;
   border-top: 2px solid #000;
-  /* text-align: center; */
   display: flex;
   justify-content: space-between;
   padding: 0 1em 0 1em;
@@ -246,6 +254,19 @@ footer {
 .fa-github a {
   font-size: 25px;
   color: #000;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-github:hover {
+  /* transform: rotate(180deg); */
+  animation: rotate 3s infinite;
 }
 
 /* Fonts and links */

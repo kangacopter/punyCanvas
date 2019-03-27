@@ -132,7 +132,15 @@ $(document).ready(function() {
 
   // Save file - thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
-    if (typeof imgDownload === "undefined") {
+    // Detect for mobile, which cannot use this save button.
+    // Thanks to https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      alert("Mobile device detected... please save the image below instead.");
+    } else if (typeof imgDownload === "undefined") {
       alert("Please doodle something and output before downloading!");
     } else {
       $(this).attr("href", imgDownload);
