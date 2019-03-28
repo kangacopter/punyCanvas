@@ -17,3 +17,7 @@ To create a web app that gives the user an enlarged grid to create their own pix
 
 - Open index.html file in browser
 - Make pixel art!
+
+## Live site
+
+Visit [the live site.](http://www.kangacopter.com/punyCanvas/)
