@@ -1,10 +1,10 @@
-# Puny Canvas
+# 🎨punyCanvas
 
-## Purpose
+## 👩‍💻Purpose
 
 To create a web app that gives the user an enlarged grid to create their own pixel art, which will be output as an image for the user to save.
 
-## Features
+## 💾Features
 
 - Pixel canvas
 - Color palette to choose colors to apply to each pixel
@@ -13,11 +13,11 @@ To create a web app that gives the user an enlarged grid to create their own pix
 - Name editing feature
 - Fun nostalgic vibes!
 
-## How to run
+## 🕹How to run
 
 - Open index.html file in browser
 - Make pixel art!
 
-## Live site
+## 📡Live site
 
 Visit [the live site.](http://www.kangacopter.com/punyCanvas/)
