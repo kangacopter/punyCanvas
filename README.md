@@ -15,7 +15,7 @@ To create a web app that gives the user an enlarged grid to create their own pix
 
 ## 🕹How to run
 
-- Open index.html file in browser
+- Open index.html file in browser. There may be some issues with IE.
 - Make pixel art!
 
 ## 📡Live site

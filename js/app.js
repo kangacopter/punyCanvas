@@ -2,6 +2,7 @@
 let currentColor = "";
 let dragging = false;
 let artName = "art name";
+let numPixels = 16;
 
 // Set color arrays (let color = [r, g, b])
 let blue = [60, 145, 230];
@@ -15,9 +16,9 @@ let black = [0, 0, 0];
 
 // Initialize the canvas of pixels
 $(document).ready(function() {
-  for (let x = 0; x < 16; x++) {
+  for (let x = 0; x < numPixels; x++) {
     let row = '<div class="pixelRow">';
-    for (let y = 0; y < 16; y++) {
+    for (let y = 0; y < numPixels; y++) {
       row += "<div class='pixel none'></div>";
     }
     row += "</div>";
@@ -108,17 +109,17 @@ $(document).ready(function() {
     let imgOutput = document.createElement("canvas");
     let ctx = imgOutput.getContext("2d");
 
-    imgOutput.width = 16;
-    imgOutput.height = 16;
+    imgOutput.width = numPixels;
+    imgOutput.height = numPixels;
 
-    let imgData = ctx.createImageData(16, 16);
+    let imgData = ctx.createImageData(numPixels, numPixels);
 
     let n = 0;
     for (let z = 0; z < imgData.data.length; z += 4) {
-      imgData.data[z + 0] = pixels[n][0];
-      imgData.data[z + 1] = pixels[n][1];
-      imgData.data[z + 2] = pixels[n][2];
-      imgData.data[z + 3] = 255; // This one is for opacity?
+      imgData.data[z + 0] = pixels[n][0]; // Red
+      imgData.data[z + 1] = pixels[n][1]; // Green
+      imgData.data[z + 2] = pixels[n][2]; // Blue
+      imgData.data[z + 3] = 255; // This one is for opacity
       n++;
     }
 
@@ -131,16 +132,19 @@ $(document).ready(function() {
   }
 
   // Save the output file, warn user of potential saving issues
-  //Thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
+  // Thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
-    // Detect for mobile, which cannot use this save button.
+    // Detect for both mobile and IE, which cannot use this save button. They can right-click save the image, though.
     // Thanks to https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
+    // Also: https://css-tricks.com/snippets/javascript/detect-internet-explorer/
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       )
     ) {
       alert("Mobile device detected... please save the image below instead.");
+    } else if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+      alert("IE detected... please output and save the image below instead.");
     } else if (typeof imgDownload === "undefined") {
       alert("Please doodle something and output before downloading!");
     } else {
@@ -157,7 +161,7 @@ $(document).ready(function() {
     $("#name-edit").css("display", "flex");
     $("#name-set").css("display", "none");
     // $("#name-input").attr("placeholder", name);
-    // Option to have the name as a placeholder.. this introduced a strange side effect though.
+    // Option to have the name as the text input placeholder.. this introduced a strange side effect though.
   };
 
   $.fn.setName = function() {
