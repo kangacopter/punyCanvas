@@ -3,7 +3,7 @@ let currentColor = "";
 let dragging = false;
 let artName = "art name";
 
-// Set color arrays
+// Set color arrays (let color = [r, g, b])
 let blue = [60, 145, 230];
 let green = [159, 211, 86];
 let purple = [91, 80, 122];
@@ -39,7 +39,7 @@ $(document).ready(function() {
     dragging = false;
   });
 
-  // Flawed fix for dragging issue
+  // Prevents an issue that occurs when user clicks in between pixels
   $(document).on("dragend", function() {
     dragging = false;
   });
@@ -57,7 +57,7 @@ $(document).ready(function() {
     }
   });
 
-  // Button for image output
+  // Button for image output, loads pixel array
   $("#output").on("click", function() {
     let pixels = [];
     $(".pixel").each(function(i) {
@@ -100,7 +100,7 @@ $(document).ready(function() {
     getImage(pixels);
   });
 
-  // Creates image output
+  // Creates image output using canvas
   // Thanks to this jsfiddle: http://jsfiddle.net/m1erickson/956kC/
   // Check this out, also: https://www.w3schools.com/tags/canvas_imagedata_data.asp
   function getImage(pixels) {
@@ -130,7 +130,8 @@ $(document).ready(function() {
     $(".output-container").append(outputImage);
   }
 
-  // Save file - thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
+  // Save the output file, warn user of potential saving issues
+  //Thanks to this jsfiddle: http://jsfiddle.net/Ljrf7uxm/
   $("#save-button").on("click", function() {
     // Detect for mobile, which cannot use this save button.
     // Thanks to https://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
@@ -147,11 +148,10 @@ $(document).ready(function() {
       $(this).attr("download", artName + ".png");
     }
     // This is based on the user's name input. In the future, it would be wise to ensure the user does not name
-    // the canvas with certain characters. For now, it appears that this is being done for me, to a degree.
+    // the canvas with certain characters. For now, it appears that this is not an issue.
   });
 
-  // Name changing function
-
+  // Art name changing functions
   $.fn.editName = function() {
     let name = $(".art-name-text").html();
     $("#name-edit").css("display", "flex");
@@ -186,7 +186,7 @@ $(document).ready(function() {
   });
 
   $("#name-input").on("keypress", function(e) {
-    if (event.which == 13) {
+    if (e.keyCode == 13) {
       e.preventDefault();
       $.fn.setName();
     }
@@ -196,7 +196,7 @@ $(document).ready(function() {
   console.log("i<3u, jquery. rip?");
 }); // End of document ready
 
-// Function to get color from each palette
+// Function to get color from each color in palette
 $.fn.getColor = function() {
   let color = $(this)
     .attr("class")
@@ -215,8 +215,7 @@ $.fn.getColor = function() {
   }
 };
 
-// Set currentColor of palette clicked, which is a CLASS NAME to apply to the pixel
-// Listen for click on each color, set current color variable to that color
+// Set currentColor of palette clicked, which is a class name to apply to the pixel.
 $(".color").on("click", function() {
   switch ($(this).attr("id")) {
     case "color1":
