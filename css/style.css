@@ -323,6 +323,11 @@ a:hover {
     font-size: 35px;
   }
 
+  .fa-check,
+  .fa-edit {
+    font-size: 25px;
+  }
+
   footer {
     height: 4em;
   }
